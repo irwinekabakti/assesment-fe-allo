@@ -8,25 +8,25 @@ const route = useRoute();
 const store = useRocketStore();
 
 
+// onMounted(() => {
+//   const idParam = route.params.id;
+//   const id = Array.isArray(idParam) ? idParam[0] : idParam;
+//   // If your API expects number:
+//   store.fetchRocketDetail(id ? Number(id) : 0); // or handle undefined case
+//   // If it expects string:
+//   // store.fetchRocketDetail(id ?? '');
+// });
+
 onMounted(() => {
-  const idParam = route.params.id;
-  const id = Array.isArray(idParam) ? idParam[0] : idParam;
-  // If your API expects number:
-  store.fetchRocketDetail(id ? Number(id) : 0); // or handle undefined case
-  // If it expects string:
-  // store.fetchRocketDetail(id ?? '');
+  store.fetchRocketDetail(route.params.id);
 });
 
-// onMounted(() => {
-//   store.fetchRocketDetail(route.params.id);
-// });
-
-// onMounted(() => {
-//   const id = route.params.id;
-//   if (typeof id === "string") {
-//     store.fetchRocketDetail(id);
-//   }
-// });
+onMounted(() => {
+  const id = route.params.id;
+  if (typeof id === "string") {
+    store.fetchRocketDetail(id);
+  }
+});
 
 </script>
 

@@ -14,7 +14,10 @@ export async function getRockets(): Promise<AxiosResponse<Rocket[]>> {
   // return axios.get<Rocket[]>('/api/rockets');
 }
 
-export function getRocketById(id: string | number): Promise<AxiosResponse<Rocket>> {
-  return axios.get<Rocket>(`/api/rockets/${id}`);
+export async function getRocketById(id: string | number): Promise<AxiosResponse<Rocket>> {
+  // return axios.get<Rocket>(`/api/rockets/${id}`);
+  const response = await api.get(`/rockets/${id}`);
+//  console.log(response.data)
+      return response;
 }
 
