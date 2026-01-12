@@ -1,4 +1,4 @@
-
+/*
 // export interface Rocket {
 //   id: string | number;
 //   name: string;
@@ -29,8 +29,9 @@
 //   first_flight?: string;
 //   // add any other fields returned by your API
 // }
+*/
 
-// src/types/rocket.ts
+/*
 export interface Rocket {
   id: string;
   name: string;
@@ -39,5 +40,35 @@ export interface Rocket {
   cost_per_launch: number;
   country: string;
   first_flight: string;
+    isLocal?: boolean;
+}
+*/
+
+export interface Rocket {
+  id: string;
+  name: string;
+  description: string;
+  country: string;
+  company: string;
+  cost_per_launch: number;
+  first_flight: string;
+  active: boolean;
+  flickr_images: string[];
+
+  first_stage: {
+    reusable: boolean;
+  };
+
+  height: {
+    meters: number;
+    feet: number;
+  };
+
+  mass: {
+    kg: number;
+    lb: number;
+  };
+
+  isLocal?: boolean;
 }
 
