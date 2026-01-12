@@ -9,6 +9,8 @@ const store = useRocketStore();
 
 onMounted(() => {
   store.fetchRockets();
+
+  console.log(store, '<--')
 });
 </script>
 
@@ -39,9 +41,8 @@ onMounted(() => {
     >
       <RocketCard
         v-for="rocket in store.filteredRockets"
-        :key="rocket.id"
-        :rocket="rocket"
-      />
+        :key=rocket.id
+        :rocket="rocket"/>
     </div>
   </div>
 </template>

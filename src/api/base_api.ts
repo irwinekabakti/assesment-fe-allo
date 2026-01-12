@@ -7,8 +7,11 @@ const api = axios.create({
 });
 
 
-export function getRockets(): Promise<AxiosResponse<Rocket[]>> {
-  return axios.get<Rocket[]>('/api/rockets');
+export async function getRockets(): Promise<AxiosResponse<Rocket[]>> {
+ const response = await api.get("/rockets");
+ console.log(response.data)
+      return response;
+  // return axios.get<Rocket[]>('/api/rockets');
 }
 
 export function getRocketById(id: string | number): Promise<AxiosResponse<Rocket>> {

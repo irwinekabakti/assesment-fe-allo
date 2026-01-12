@@ -40,6 +40,8 @@ export const useRocketStore = defineStore('rocket', {
       try {
         const res = await getRockets();
         this.rockets = res.data;
+        console.log(res, '<=== data test')
+        
       } catch (err) {
         this.error = 'Failed to load rockets';
       } finally {
