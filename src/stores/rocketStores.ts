@@ -11,7 +11,7 @@ interface RocketState {
   filterText: string;
 }
 
-export const useRocketStore = defineStore('rocket', {
+const useRocketStore = defineStore('rocket', {
   // ✅ Type the state return to RocketState
   state: (): RocketState => ({
     rockets: [],
@@ -63,3 +63,5 @@ export const useRocketStore = defineStore('rocket', {
     },
   },
 });
+
+export {useRocketStore}
