@@ -5,7 +5,7 @@ export interface Rocket {
   country: string;
   company: string;
   cost_per_launch: number;
-  first_flight: string;
+  first_flight?: string;
   active: boolean;
   flickr_images: string[];
 

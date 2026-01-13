@@ -2,7 +2,6 @@
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useRocketStore } from "@/stores/rocketStores";
-import {  } from "vue";
 
 const store = useRocketStore();
 const router = useRouter();
@@ -46,22 +45,6 @@ const submit = (): void => {
 
   router.push("/");
 };
-
-
-const imagePreviews = ref<string[]>([]);
-// const imageFiles = ref<File[]>([]);
-
-// const onImageChange = (event: Event): void => {
-//   const input = event.target as HTMLInputElement;
-//   if (!input.files) return;
-
-//   imageFiles.value = Array.from(input.files);
-
-//   imagePreviews.value = imageFiles.value.map((file) =>
-//     URL.createObjectURL(file)
-//   );
-// };
-
 
 const imageBase64 = ref<string[]>([]);
 
