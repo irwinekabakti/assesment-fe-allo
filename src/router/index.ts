@@ -8,21 +8,25 @@ const routes: RouteRecordRaw[] = [
     path: "/",
     name: "list",
     component: RocketListView,
+    meta: { title: "Home" },
   },
   {
     path: "/rocket/:id",
     name: "detail",
     component: RocketDetailView,
-    props: true,
+    meta: { title: "Rocket Detail" }, 
   },
-    { path: "/rockets/new", 
-      name: "create", 
-      component: CreateRocketView 
-    },
-
+  {
+    path: "/rockets/new",
+    name: "create",
+    component: CreateRocketView,
+    meta: { title: "Add New Rocket" },
+  },
 ];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+export default router;

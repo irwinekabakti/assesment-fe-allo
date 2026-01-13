@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, watch  } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useRocketStore } from "@/stores/rocketStores";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
@@ -19,6 +19,16 @@ onMounted(() => {
     store.fetchRocketDetail(id);
   }
 });
+
+watch(
+  () => store.selectedRocket,
+  (rocket) => {
+    if (rocket) {
+      document.title = `Rocket Detail - 🚀 ${rocket.name}`;
+    }
+  },
+  { immediate: true }
+);
 
 console.log(store, '<--------')
 
