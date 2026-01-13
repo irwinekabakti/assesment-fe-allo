@@ -28,7 +28,6 @@ const submit = (): void => {
     first_flight: new Date().toISOString().split("T")[0],
     active: active.value,
       flickr_images: imageBase64.value,
-    // flickr_images: imagePreviews.value,
     first_stage: {
       reusable: reusable.value,
     },

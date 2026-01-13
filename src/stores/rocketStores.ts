@@ -85,7 +85,6 @@ export const useRocketStore = defineStore("rocket", {
 
       this.localRockets.unshift(newRocket);
 
-      // ✅ persist ke localStorage
       localStorage.setItem(
         LOCAL_KEY,
         JSON.stringify(this.localRockets)
@@ -107,7 +106,6 @@ export const useRocketStore = defineStore("rocket", {
     this.selectedRocket = null;
   }
 },
-    // (optional) clear local rockets
     clearLocalRockets(): void {
       this.localRockets = [];
       localStorage.removeItem(LOCAL_KEY);

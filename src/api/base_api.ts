@@ -7,12 +7,8 @@ const api = axios.create({
   timeout: 3500,
 });
 
-console.log(import.meta.env.VITE_BASE_API_URL, '<---');
-
-
 export async function getRockets(): Promise<AxiosResponse<Rocket[]>> {
   const response = await api.get("/v4/rockets");
-  console.log(response, '<--- from base_api.ts')
   return response;
 }
 
