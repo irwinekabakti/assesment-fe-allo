@@ -1,5 +1,5 @@
-<script setup>
-import { onMounted, watch  } from "vue";
+<script setup lang="ts">
+import { computed, onMounted, watch  } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useRocketStore } from "@/stores/rocketStores";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
@@ -9,16 +9,28 @@ const store = useRocketStore();
 const router = useRouter();
 
 onMounted(() => {
-  store.fetchRocketDetail(route.params.id);
-});
-
-onMounted(() => {
   const id = route.params.id;
-
   if (typeof id === "string") {
     store.fetchRocketDetail(id);
   }
 });
+
+const canDelete = computed<boolean>(() => {
+  return Boolean(store.selectedRocket?.isLocal);
+});
+
+const deleteRocket = (): void => {
+  if (!store.selectedRocket) return;
+
+  const confirmed = window.confirm(
+    "Are you sure you want to delete this rocket?"
+  );
+
+  if (!confirmed) return;
+
+  store.deleteRocket(store.selectedRocket.id);
+  router.push("/");
+};
 
 watch(
   () => store.selectedRocket,
@@ -42,9 +54,24 @@ console.log(store, '<--------')
       <p class="text-red-500">{{ store.error }}</p>
     </div>
 
-    <div class="my-2" @click="router.push(`/`)">
-      <button class="bg-gray-100 pt-2 pb-2 pl-4 pr-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer font-semibold">Back</button>
-    </div>
+    <div class="my-2 gap-2 flex justify-between">
+  <button
+    class="bg-gray-100 px-4 py-2 rounded-lg shadow hover:shadow-lg cursor-pointer font-semibold"
+    @click="router.push('/')"
+  >
+    Back
+  </button>
+
+  <button
+    v-if="canDelete"
+    class="bg-red-500 text-white px-4 py-2 rounded-lg shadow hover:bg-red-600 cursor-pointer font-semibold" 
+    @click="deleteRocket"
+  >
+    Delete
+  </button>
+  </div>
+
+
 
 <div v-if="store.selectedRocket" class="my-4">
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -108,6 +135,5 @@ console.log(store, '<--------')
     </div>
   </div>
 </div>
-
-  </div>
+</div>
 </template>

@@ -93,7 +93,20 @@ export const useRocketStore = defineStore("rocket", {
 
       return id;
     },
+    deleteRocket(id: string): void {
+  this.localRockets = this.localRockets.filter(
+    (r) => r.id !== id
+  );
 
+  localStorage.setItem(
+    "local_rockets",
+    JSON.stringify(this.localRockets)
+  );
+
+  if (this.selectedRocket?.id === id) {
+    this.selectedRocket = null;
+  }
+},
     // (optional) clear local rockets
     clearLocalRockets(): void {
       this.localRockets = [];
